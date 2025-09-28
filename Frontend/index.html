@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Auth Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔐 Azure AD 인증 데모</h1>
+            <div id="user-info"></div>
+        </header>
+
+        <main>
+            <!-- 로그인 섹션 -->
+            <div id="login-section" class="section">
+                <h2>로그인</h2>
+                <p class="info">Microsoft 계정으로 로그인하여 시작하세요.</p>
+                <button id="login-btn" class="btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-right: 8px; vertical-align: middle;">
+                        <path fill="#F25022" d="M0 0h9v9H0z"/>
+                        <path fill="#00A4EF" d="M11 0h9v9h-9z"/>
+                        <path fill="#7FBA00" d="M0 11h9v9H0z"/>
+                        <path fill="#FFB900" d="M11 11h9v9h-9z"/>
+                    </svg>
+                    Microsoft 계정으로 로그인
+                </button>
+            </div>
+
+            <!-- 검색 섹션 -->
+            <div id="search-section" class="section" style="display: none;">
+                <h2>문서 검색</h2>
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="검색어를 입력하세요... (예: Azure, JWT, PKCE)">
+                    <button id="search-btn" class="btn-secondary">검색</button>
+                    <button id="clear-btn" class="btn-secondary">초기화</button>
+                </div>
+
+                <div id="search-results" class="results">
+                    <div class="loading">문서를 불러오는 중...</div>
+                </div>
+            </div>
+
+            <!-- 토큰 정보 -->
+            <div id="token-section" class="section" style="display: none;">
+                <h2>토큰 정보</h2>
+                <div class="token-tabs">
+                    <button class="tab-btn active" data-tab="access">Access Token</button>
+                    <button class="tab-btn" data-tab="refresh">Refresh Token</button>
+                </div>
+                
+                <div id="access-tab" class="tab-content active">
+                    <div class="token-info">
+                        <h3>Access Token (JWT) - 30분 유효</h3>
+                        <textarea id="access-token" readonly placeholder="Access Token이 여기에 표시됩니다"></textarea>
+                        <button id="decode-access-btn" class="btn-secondary">Decode JWT</button>
+                        <button id="copy-access-btn" class="btn-secondary">복사</button>
+                        <div id="decoded-access-token" class="decoded"></div>
+                    </div>
+                </div>
+                
+                <div id="refresh-tab" class="tab-content" style="display: none;">
+                    <div class="token-info">
+                        <h3>Refresh Token - 7일 유효</h3>
+                        <textarea id="refresh-token" readonly placeholder="Refresh Token이 여기에 표시됩니다"></textarea>
+                        <button id="decode-refresh-btn" class="btn-secondary">Decode JWT</button>
+                        <button id="copy-refresh-btn" class="btn-secondary">복사</button>
+                        <div id="decoded-refresh-token" class="decoded"></div>
+                    </div>
+                </div>
+                
+                <div class="token-status">
+                    <div id="token-timer"></div>
+                    <button id="refresh-token-btn" class="btn-secondary" style="display: none;">토큰 갱신</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <button id="logout-btn" class="btn-danger" style="display: none;">
+                로그아웃
+            </button>
+        </footer>
+    </div>
+
+    <!-- MSAL.js -->
+    <script src="https://alcdn.msauth.net/browser/2.32.2/js/msal-browser.min.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>
