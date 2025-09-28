@@ -30,10 +30,19 @@ public class AzureAuthService
                 var content = await response.Content.ReadAsStringAsync();
                 dynamic userData = JsonConvert.DeserializeObject(content)!;
                 
+                // Log the response for debugging
+                _logger.LogInformation($"Graph API response: {content}");
+                
+                // Handle various email field possibilities
+                string email = userData.mail?.ToString() 
+                    ?? userData.userPrincipalName?.ToString() 
+                    ?? userData.preferredUsername?.ToString()
+                    ?? $"{userData.id}@azure.local"; // Fallback email if none found
+                
                 return new AzureUserInfo
                 {
                     Id = userData.id,
-                    Email = userData.mail ?? userData.userPrincipalName,
+                    Email = email,
                     DisplayName = userData.displayName ?? "User",
                     GivenName = userData.givenName ?? "",
                     Surname = userData.surname ?? ""

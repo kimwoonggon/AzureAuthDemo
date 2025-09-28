@@ -149,7 +149,7 @@ window.addEventListener('load', async () => {
 loginBtn.addEventListener('click', async () => {
     try {
         const loginRequest = {
-            scopes: ["openid", "profile", "email"],
+            scopes: ["openid", "profile", "email", "User.Read"],
         };
         
         try {

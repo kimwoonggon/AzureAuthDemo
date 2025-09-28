@@ -27,7 +27,7 @@ Azure Active Directory를 활용한 JWT 토큰 기반 인증 시스템 데모 �
 
 ### 기술 스택
 - **Frontend**: HTML/CSS/JavaScript + MSAL.js
-- **Backend**: ASP.NET Core 7.0 (macOS 지원)
+- **Backend**: ASP.NET Core 8.0 (macOS 지원)
 - **Database**: SQLite
 - **Authentication**: Azure AD + JWT
 
@@ -170,7 +170,7 @@ AzureAuthDemo/
 
 ### 1. **필수 요구사항**
 
-- **.NET 7.0 SDK** (macOS/Windows/Linux)
+- **.NET 8.0 SDK** (macOS/Windows/Linux)
   ```bash
   # 설치 확인
   dotnet --version

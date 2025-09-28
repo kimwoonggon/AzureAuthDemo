@@ -14,8 +14,9 @@ dotnet restore
 # 데이터베이스 확인 및 생성
 if [ ! -f "app.db" ]; then
     echo "🗄️ Creating database..."
-    dotnet ef migrations add InitialCreate
-    dotnet ef database update
+    export PATH="$PATH:$HOME/.dotnet/tools"
+    dotnet-ef migrations add InitialCreate
+    dotnet-ef database update
 else
     echo "✅ Database already exists"
 fi
