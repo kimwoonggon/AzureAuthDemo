@@ -291,6 +291,8 @@ npx http-server -p 3000
 3. Microsoft 계정 입력 (회사/학교 계정 또는 개인 계정)
 4. 권한 동의 화면에서 "Accept" 클릭
 
+![로그인 화면](login.png)
+
 ### 2. **문서 검색**
 - 로그인 후 자동으로 문서 목록 표시
 - 검색창에 키워드 입력 (예: "Azure", "JWT", "PKCE")
@@ -301,6 +303,8 @@ npx http-server -p 3000
 - Refresh Token 탭: 7일 유효한 갱신 토큰
 - "Decode JWT" 버튼: 토큰 내용 확인
 - 타이머: 토큰 만료까지 남은 시간 표시
+
+![로그인 후 화면](after-jwt-connect.png)
 
 ### 4. **토큰 갱신**
 - Access Token 만료 5분 전 경고 표시
